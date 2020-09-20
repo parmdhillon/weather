@@ -58,6 +58,13 @@ const getDate = (timestamp) => {
   return `${days[a.getDay()]}, ${a.getDate()} ${months[a.getMonth()]}`;
 };
 
+places({
+  //Autocomplete API
+  appId: 'pl8NP7WMXESY',
+  apiKey: '1628208f373ec7118e2c9f542daddfab',
+  container: document.querySelector('#cityName'),
+});
+
 getCity.addEventListener('submit', (e) => {
   e.preventDefault();
 

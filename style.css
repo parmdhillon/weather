@@ -20,3 +20,6 @@ input {
   margin-left: 10px;
   vertical-align: sub;
 }
+.ap-suggestion {
+  text-align: left;
+}
