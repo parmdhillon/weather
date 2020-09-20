@@ -7,6 +7,7 @@ const tempratureEl = document.getElementById('temprature');
 const tempratureInfo = document.getElementById('tempratureInfo');
 const weatherIcon = document.getElementById('weatherIcon');
 const cityError = document.getElementById('cityError');
+const flag = document.querySelector('.flag');
 const weatherData = new weather();
 
 const updateUI = (data) => {
@@ -22,6 +23,10 @@ const updateUI = (data) => {
     tempratureEl.textContent = data.main.temp + '°';
     tempratureInfo.textContent = data.weather[0].main;
     weatherIcon.setAttribute('src', `assets/img/${data.weather[0].icon}.png`);
+    flag.setAttribute(
+      'src',
+      `https://www.countryflags.io/${data.sys.country.toLowerCase()}/flat/64.png`
+    );
   }
 };
 

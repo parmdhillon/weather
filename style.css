@@ -15,3 +15,8 @@ body {
 input {
   font-family: inherit;
 }
+.flag {
+  width: 20px;
+  margin-left: 10px;
+  vertical-align: sub;
+}
