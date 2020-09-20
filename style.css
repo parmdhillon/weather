@@ -12,3 +12,6 @@ body {
 .text-dull-blue {
   color: #364f6b !important;
 }
+input {
+  font-family: inherit;
+}
