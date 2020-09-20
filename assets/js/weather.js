@@ -12,6 +12,9 @@ export class weather {
       const weatherData = await apiResponse.json();
       return weatherData;
     }
-    return;
+    const notFound = {
+      notfound: true,
+    };
+    return notFound;
   }
 }

@@ -6,15 +6,23 @@ const dayTime = document.getElementById('dayTime');
 const tempratureEl = document.getElementById('temprature');
 const tempratureInfo = document.getElementById('tempratureInfo');
 const weatherIcon = document.getElementById('weatherIcon');
+const cityError = document.getElementById('cityError');
 const weatherData = new weather();
 
 const updateUI = (data) => {
-  setCity.textContent = data.name;
-  dayTime.textContent = getDate(data.dt);
-  tempratureEl.textContent = data.main.temp + '°';
-  tempratureInfo.textContent = data.weather[0].main;
-  weatherIcon.setAttribute('src', `assets/img/${data.weather[0].icon}.png`);
-  console.log(data);
+  if ('notfound' in data) {
+    cityError.style.display = 'block';
+    setTimeout(() => {
+      cityError.style.display = 'none';
+    }, 1500);
+  } else {
+    localStorage.setItem('city', data.name);
+    setCity.textContent = data.name;
+    dayTime.textContent = getDate(data.dt);
+    tempratureEl.textContent = data.main.temp + '°';
+    tempratureInfo.textContent = data.weather[0].main;
+    weatherIcon.setAttribute('src', `assets/img/${data.weather[0].icon}.png`);
+  }
 };
 
 const getDate = (timestamp) => {
@@ -54,7 +62,6 @@ getCity.addEventListener('submit', (e) => {
 
   //Getting Weather Data and Updating UI
   if (cityName != '') {
-    localStorage.setItem('city', cityName);
     weatherData.getWeather(cityName).then((data) => {
       updateUI(data);
     });
